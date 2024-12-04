@@ -75,5 +75,3 @@ A modern, responsive web application that showcases a curated collection of cock
 - Bootstrap for base styling
 - Images sourced appropriately (add attribution as needed)
 
-## License
-[Add your chosen license]
