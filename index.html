@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>sams menu + Themes</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS Links -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rampart+One&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Root Variables & Theme Definitions
+-------------------------------------------------- */
+      :root {
+        --background-color: #f8f9fa;
+        --navbar-color: #ffffff;
+        --nav-button-color: #4a5568;
+        --text-color: #6d7584;
+        --card-front-bg: #ffffff;
+        --card-back-bg: #4a5568;
+        --card-shadow: rgba(0, 0, 0, 0.1);
+        --card-text-front: #1a202c;
+        --card-text-back: #ffffff;
+        --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+        --nav-button-color-rgb: 74, 85, 104;
+      }
+
+      /* Theme Variations */
+      :root.earth-theme {
+        --background-color: #2a2e25;
+        --navbar-color: #3b4536;
+        --nav-button-color: #8a9b68;
+        --text-color: #f5ede3;
+        --card-front-bg: #f5ede3;
+        --card-back-bg: #6b7f54;
+        --card-shadow: rgba(32, 38, 29, 0.25);
+        --card-text-front: #2a2e25;
+        --card-text-back: #f5ede3;
+        --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+        --nav-button-color-rgb: 138, 155, 104;
+      }
+
+      /* Theme Variations */
+      :root.ocean-theme {
+        --background-color: #006d77;
+        --navbar-color: #83c5be;
+        --nav-button-color: #edf6f9;
+        --text-color: #ffffff;
+        --card-front-bg: #edf6f9;
+        --card-back-bg: #83c5be;
+        --card-shadow: rgba(0, 109, 119, 0.3);
+        --card-text-front: #006d77;
+        --card-text-back: #ffffff;
+        --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+        --nav-button-color-rgb: 237, 246, 249;
+      }
+
+      :root.chroma-theme {
+        --background-color: #6600ff;
+        --navbar-color: #ff00ff;
+        --nav-button-color: #00ffff;
+        --text-color: #ffffff;
+        --card-front-bg: #ffffff;
+        --card-back-bg: #00ffff;
+        --card-shadow: rgba(0, 255, 255, 0.5);
+        --card-text-front: #6600ff;
+        --card-text-back: #000000;
+        --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+        --nav-button-color-rgb: 0, 255, 255;
+      }
+
+      :root.sunset-theme {
+        --background-color: #ff6b35;
+        --navbar-color: #f7c59f;
+        --nav-button-color: #fbff27;
+        --text-color: #ffffff;
+        --card-front-bg: #ffffff;
+        --card-back-bg: #fdff6b;
+        --card-shadow: rgba(255, 107, 53, 0.3);
+        --card-text-front: #ff1f1f;
+        --card-text-back: #fe1f1f;
+        --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+        --nav-button-color-rgb: 255, 230, 109;
+      }
+
+      :root.pink-theme {
+        --background-color: #fdf2f4;
+        --navbar-color: #fde2e8;
+        --nav-button-color: #e294a7;
+        --text-color: #1a1214;
+        --card-front-bg: #fde2e8;
+        --card-back-bg: #e294a7;
+        --card-shadow: rgba(226, 148, 167, 0.3);
+        --card-text-front: #1a1214;
+        --card-text-back: #ffffff;
+        --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+        --nav-button-color-rgb: 226, 148, 167;
+      }
+
+      :root.bobcats-theme {
+        --background-color: #501214;
+        --navbar-color: #ac9155;
+        --nav-button-color: #781d20;
+        --text-color: #f9f6f1;
+        --card-front-bg: #f9f6f1;
+        --card-back-bg: #7a2629;
+        --card-shadow: rgba(80, 18, 20, 0.25);
+        --card-text-front: #501214;
+        --card-text-back: #f9f6f1;
+        --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+        --nav-button-color-rgb: 194, 170, 128;
+      }
+
+      :root.noir-theme {
+        --background-color: #000000;
+        --navbar-color: #1a1a1a;
+        --nav-button-color: #ffffff;
+        --text-color: #ffffff;
+        --card-front-bg: #1a1a1a;
+        --card-back-bg: #808080;
+        --card-text-front: #ffffff;
+        --card-text-back: #000000;
+        --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+        --nav-button-color-rgb: 255, 255, 255;
+      }
+
+      /* Base Styles
+-------------------------------------------------- */
+      body {
+        background-color: var(--background-color);
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+        transition: background-color 0.5s var(--transition-timing);
+      }
+
+      /* Theme Background Gradients
+-------------------------------------------------- */
+      .theme-default {
+        background: linear-gradient(45deg, #ededed 50%, #838383 50%);
+      }
+      .theme-earth {
+        background: linear-gradient(45deg, #2a2e25 50%, #8a9b68 50%);
+      }
+
+      .theme-ocean {
+        background: linear-gradient(45deg, #006d77 50%, #83c5be 50%);
+      }
+
+      .theme-pink {
+        background: linear-gradient(45deg, #fde2e8 50%, #ffb3c6 50%);
+      }
+
+      .theme-chroma {
+        background: linear-gradient(45deg, #6600ff 50%, #00ffff 50%);
+      }
+
+      .theme-sunset {
+        background: linear-gradient(45deg, #ff6b35 50%, #ffe66d 50%);
+      }
+
+      .theme-noir {
+        background: linear-gradient(45deg, #ffffff 50%, #000000 50%);
+      }
+
+      .theme-bobcats {
+        background: linear-gradient(45deg, #501241 50%, #ac9155 50%);
+      }
+
+      /* Header Styles
+-------------------------------------------------- */
+      .header {
+        text-align: center;
+        padding: 2rem 0;
+        color: var(--text-color);
+      }
+
+      .header h3 {
+        font-family: "Montserrat", sans-serif; /* Changed from "Rampart One" */
+        font-size: 2.5rem;
+        margin: 0;
+        letter-spacing: 0.05em;
+        font-weight: 600; /* Added to match the overall style */
+      }
+
+      .letter {
+        color: var(--nav-button-color);
+        text-shadow: 0 0 10px rgba(var(--nav-button-color-rgb), 0.3);
+        transition: all 0.3s var(--transition-timing);
+        font-size: 1.8rem;
+        font-weight: 600;
+        margin: 0;
+        letter-spacing: 0.1em;
+      }
+
+      .letter:hover {
+        text-shadow: 0 0 15px rgba(var(--nav-button-color-rgb), 0.5);
+        transform: scale(1.05);
+      }
+
+      /* Navigation Styles
+-------------------------------------------------- */
+      .navbar {
+        width: 100vw;
+        margin: 0;
+        padding: 1rem 0;
+        background-color: var(--navbar-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        z-index: 999;
+        transition: background-color 0.5s var(--transition-timing);
+        backdrop-filter: blur(10px);
+      }
+
+      .navbar-nav {
+        flex-grow: 1;
+      }
+
+      .ms-auto {
+        display: flex;
+        align-items: center;
+      }
+
+      .source-code-button {
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      /* Navigation Buttons
+-------------------------------------------------- */
+      .nav-buttons {
+        background: none;
+        border: 2px solid var(--nav-button-color);
+        color: var(--nav-button-color);
+        text-decoration: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+        transition: all 0.3s var(--transition-timing);
+        font-weight: 300;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .nav-buttons:before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background-color: var(--nav-button-color);
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        transition: width 0.6s ease, height 0.6s ease;
+        z-index: -1;
+      }
+
+      .nav-buttons:hover:before {
+        width: 300px;
+        height: 300px;
+      }
+
+      .nav-buttons:hover {
+        color: var(--background-color);
+        transform: translateY(-2px);
+      }
+
+      /* Recipe Section Grid Layout
+-------------------------------------------------- */
+      .recipe-section {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 24px;
+        padding: 24px;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      /* Recipe Card Styles
+-------------------------------------------------- */
+      .recipe-item {
+        position: relative;
+        border-radius: 12px;
+        overflow: visible;
+        height: 320px;
+        cursor: pointer;
+        perspective: 1500px;
+        transition: transform 0.3s var(--transition-timing);
+      }
+
+      .recipe-item:hover {
+        transform: translateY(-4px);
+      }
+
+      /* Card Components
+-------------------------------------------------- */
+      .card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+        transition: transform 0.8s var(--transition-timing);
+      }
+
+      .card-front,
+      .card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        box-shadow: 0 4px 6px var(--card-shadow);
+      }
+
+      .card-front {
+        display: flex;
+        flex-direction: column;
+        border-radius: 10px;
+        background-color: var(--card-front-bg);
+        transform: rotateY(0deg);
+        transition: background-color 0.5s var(--transition-timing);
+      }
+
+      .card-back {
+        transform: rotateY(180deg);
+        background-color: var(--card-back-bg);
+        padding: 24px;
+        display: flex;
+        flex-direction: column; 
+        border-radius: 10px;
+        justify-content: center;
+        color: var(--card-text-back);
+        transition: background-color 0.5s var(--transition-timing);
+      }
+
+      .recipe-item.flipped .card-inner {
+        transform: rotateY(180deg);
+      }
+
+      /* Card Image Styles
+-------------------------------------------------- */
+      .card-image-container {
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+        position: relative;
+        border-radius: 10px;
+      }
+
+      .card-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s var(--transition-timing);
+      }
+
+      .recipe-item:hover .card-image {
+        transform: scale(1.05);
+      }
+
+      /* Card Content Styles
+-------------------------------------------------- */
+      .card-content {
+        padding: 16px;
+        background: var(--card-front-bg);
+        transition: background-color 0.5s var(--transition-timing);
+        text-align: center;
+      }
+
+      .card-front h3 {
+        color: var(--card-text-front);
+        margin: 0 0 8px 0;
+        font-size: 1.25rem;
+        font-weight: 600;
+        transition: color 0.5s var(--transition-timing);
+      }
+
+      .card-front p {
+        color: var(--card-text-front);
+        margin: 0;
+        font-size: 0.9rem;
+        opacity: 0.8;
+        transition: color 0.5s var(--transition-timing);
+      }
+
+      /* Theme Palette Styles
+-------------------------------------------------- */
+      .theme-palette {
+        position: fixed;
+        top: 120px;
+        right: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 12px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        z-index: 990;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transform: scale(0.7); /* Add this line to make it smaller by default */
+      }
+
+      .theme-palette:hover {
+        transform: scale(1); /* Return to full size on hover */
+        right: 20px; /* Ensure it stays in position */
+      }
+
+      .theme-palette:hover .theme-option {
+        opacity: 1; /* Make fully visible when palette is hovered */
+      }
+
+      .theme-option {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        opacity: 0.7; /* Add this line to make them slightly transparent by default */
+      }
+
+      .theme-option .theme-title {
+        position: absolute;
+        right: calc(100% + 8px);
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 3px 6px;
+        border-radius: 4px;
+        font-size: 11px;
+        white-space: nowrap;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.2s ease;
+        pointer-events: none;
+      }
+
+      .theme-option:hover .theme-title {
+        opacity: 1;
+        visibility: visible;
+        right: calc(100% + 10px);
+      }
+
+      .theme-option:hover {
+        transform: scale(1.15);
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+        opacity: 1; /* Ensure full opacity on direct hover */
+      }
+
+      /* Responsive Design
+-------------------------------------------------- */
+      @media (max-width: 768px) {
+        .recipe-section {
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          padding: 16px;
+          gap: 16px;
+        }
+
+        .recipe-item {
+          height: 280px;
+        }
+
+        .card-image-container {
+          height: 180px;
+        }
+
+        .header h3 {
+          font-size: 2rem;
+        }
+
+        .theme-palette {
+          top: auto;
+          bottom: 20px;
+          right: 20px;
+        }
+
+        .theme-option .theme-title {
+          display: none;
+        }
+
+        .letter {
+          font-size: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Theme Palette -->
+    <div class="theme-palette">
+      <div class="theme-option theme-default" onclick="setTheme('default')">
+        <span class="theme-title">Simple</span>
+      </div>
+      <div class="theme-option theme-earth" onclick="setTheme('earth')">
+        <span class="theme-title">Earth</span>
+      </div>
+      <div class="theme-option theme-ocean" onclick="setTheme('ocean')">
+        <span class="theme-title">Ocean</span>
+      </div>
+      <div class="theme-option theme-chroma" onclick="setTheme('chroma')">
+        <span class="theme-title">Chroma</span>
+      </div>
+      <div class="theme-option theme-sunset" onclick="setTheme('sunset')">
+        <span class="theme-title">Sunset</span>
+      </div>
+      <div class="theme-option theme-pink" onclick="setTheme('pink')">
+        <span class="theme-title">Pink</span>
+      </div>
+      <div class="theme-option theme-bobcats" onclick="setTheme('bobcats')">
+        <span class="theme-title">Eat'em up!</span>
+      </div>
+      <div class="theme-option theme-noir" onclick="setTheme('noir')">
+        <span class="theme-title">Noir</span>
+      </div>
+    </div>
+    <!--Navbar Section-->
+    <nav class="navbar navbar-expand-lg navbar-light position-relative">
+      <div class="container-fluid">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarContent"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarContent">
+          <ul
+            class="navbar-nav w-100 justify-content-center align-items-center"
+          >
+            <li class="nav-item">
+              <a class="nav-link" href="cocktailsv2.html">
+                <button class="nav-buttons">Cocktails</button>
+              </a>
+            </li>
+            <li class="nav-item mx-4">
+              <a class="nav-link" href="index.html">
+                <h1 class="letter">SAMS MENU</h1>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">
+                <button class="nav-buttons">About</button>
+              </a>
+            </li>
+          </ul>
+          <!-- Source Code Button -->
+          <a href="indexsc.html" target="_blank" class="source-code-button">
+            <button class="btn btn-primary">SOURCE CODE</button>
+          </a>
+        </div>
+      </div>
+    </nav>
+    <!-- Header Section -->
+    <section id="header">
+      <div class="header">
+        <h3>My own tweaks to classic recipes.</h3>
+      </div>
+    </section>
+    <!-- Recipe Section -->
+    <section id="cocktails">
+      <div class="recipe-section">
+        <div class="recipe-item">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="card-image-container">
+                <img
+                  src="img/rolls.jpg"
+                  alt="Japanese Milk Bread"
+                  class="card-image"
+                />
+              </div>
+              <div class="card-content">
+                <h3>Japanese Milk Bread</h3>
+                <p>Japanese • Snack • Vegan</p>
+              </div>
+            </div>
+            <div class="card-back">
+              <h3>Sam's changes:</h3>
+              <ul>
+                <li>Sub 1/4 cup whole milk for 2 tbsp milk powder.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="recipe-item">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="card-image-container">
+                <img
+                  src="img/picone.jpg"
+                  alt="Vodka Pasta"
+                  class="card-image"
+                />
+              </div>
+              <div class="card-content">
+                <h3>Beef Lo-Mein</h3>
+                <p>Chinese • Dinner • Carnivore</p>
+              </div>
+            </div>
+            <div class="card-back">
+              <h3>Sam's changes:</h3>
+              <ul>
+                <li>Sub regular soy sauce for extra dark soy sauce.</li>
+                <li>Add scallions, grated ginger, and grated garlic into beef marinade.</li> 
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="recipe-item">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="card-image-container">
+                <img
+                  src="img/pictwo.jpg"
+                  alt="Vodka Pasta"
+                  class="card-image"
+                />
+              </div>
+              <div class="card-content">
+                <h3>Spicy Orange Chicken</h3>
+                <p>Chinese • Dinner • Carnivore</p>
+              </div>
+            </div>
+            <div class="card-back">
+              <h3>Sam's changes:</h3>
+              <ul>
+                <li>Use a combo of white, red, black, and green pepper.</li>
+                <li>Add orange marmalade to spicy orange sauce.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="recipe-item">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="card-image-container">
+                <img src="img/picfour.jpg" alt="Vodka Pasta" class="card-image" />
+              </div>
+              <div class="card-content">
+                <h3>Vodka Pasta</h3>
+                <p>Italian • Dinner • Vegetarian</p>
+              </div>
+            </div>
+            <div class="card-back">
+              <h3>Sam's changes:</h3>
+              <ul>
+                <li>Add red pepper flakes.</li>
+                <li>Double amount of garlic in recipe.</li>
+                <li>Use a microplaner to grate fresh parmesan.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="recipe-item">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="card-image-container">
+                <img src="img/soup.jpg" alt="Vodka Pasta" class="card-image" />
+              </div>
+              <div class="card-content">
+                <h3>Spicy Tomato Basil Thyme Soup</h3>
+                <p>Spanish • Dinner • Vegetarian</p>
+              </div>
+            </div>
+            <div class="card-back">
+              <h3>Sam's changes:</h3>
+              <ul>
+                <li>Add red bell peppers and carrots to list of roasted vegetables.</li>
+                <li>Use white and cayenne pepper to add subtle background spice. </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="recipe-item">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="card-image-container">
+                <img
+                  src="img/picseven.jpg"
+                  alt="Vodka Pasta"
+                  class="card-image"
+                />
+              </div>
+              <div class="card-content">
+                <h3>Eggs Benedict</h3>
+                <p>USA • Breakfast • Omnivore</p>
+              </div>
+            </div>
+            <div class="card-back">
+              <h3>Sam's changes:</h3>
+              <ul>
+                <li>Add 2 extra tbsp cold butter.</li>
+                <li>Use a combination of lemon and lime juice, 70% lemon, 30% lime.</li>
+                <li>Add a tbsp of dijon mustard.</li>
+                <li>Reduce down minced shallots and add to sauce.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Card flip functionality with improved animation handling
+      function flipCard(card) {
+        card.classList.toggle("flipped");
+      }
+      // Search functionality
+      function searchCocktails() {
+        const searchInput = document.getElementById("searchInput");
+        const searchTerm = searchInput.value.toLowerCase();
+        const cocktailCards = document.querySelectorAll(".recipe-item");
+        cocktailCards.forEach((card) => {
+          const cocktailName = card
+            .querySelector("h3")
+            .textContent.toLowerCase();
+          const cocktailDescription = card
+            .querySelector("p")
+            .textContent.toLowerCase();
+          const isMatch =
+            cocktailName.includes(searchTerm) ||
+            cocktailDescription.includes(searchTerm);
+          card.style.display = isMatch ? "block" : "none";
+        });
+      }
+      // Sort functionality
+      function sortCocktails() {
+        const sortSelect = document.getElementById("sortSelect");
+        const cocktailContainer = document.querySelector(".recipe-section");
+        const cocktailCards = Array.from(
+          document.querySelectorAll(".recipe-item")
+        );
+        switch (sortSelect.value) {
+          case "alphabetical":
+            cocktailCards.sort((a, b) => {
+              const nameA = a.querySelector("h3").textContent;
+              const nameB = b.querySelector("h3").textContent;
+              return nameA.localeCompare(nameB);
+            });
+            break;
+          case "type":
+            cocktailCards.sort((a, b) => {
+              const typeA = a.querySelector("p").textContent;
+              const typeB = b.querySelector("p").textContent;
+              return typeA.localeCompare(typeB);
+            });
+            break;
+          default:
+            // Default to original order using the number badges
+            cocktailCards.sort((a, b) => {
+              const numA = parseInt(
+                a.querySelector(".recipe-number").textContent
+              );
+              const numB = parseInt(
+                b.querySelector(".recipe-number").textContent
+              );
+              return numA - numB;
+            });
+        }
+        // Clear and re-append sorted cards
+        cocktailContainer.innerHTML = "";
+        cocktailCards.forEach((card) => cocktailContainer.appendChild(card));
+      }
+      // Theme switching functionality
+      function setTheme(themeName) {
+        document.documentElement.classList.remove(
+          "default-theme",
+          "earth-theme",
+          "ocean-theme",
+          "pink-theme",
+          "chroma-theme",
+          "sunset-theme",
+          "noir-theme",
+          "bobcats-theme"
+        );
+        if (themeName !== "default") {
+          document.documentElement.classList.add(`${themeName}-theme`);
+        }
+      }
+      // Initialize search and sort listeners
+      document.addEventListener("DOMContentLoaded", function () {
+        const searchInput = document.getElementById("searchInput");
+        const sortSelect = document.getElementById("sortSelect");
+        if (searchInput) {
+          searchInput.addEventListener("input", searchCocktails);
+        }
+        if (sortSelect) {
+          sortSelect.addEventListener("change", sortCocktails);
+        }
+        // Add click listeners to all cards
+        document.querySelectorAll(".recipe-item").forEach((card) => {
+          card.addEventListener("click", () => flipCard(card));
+        });
+      });
+    </script>
+  </body>
+</html>
